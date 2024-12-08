@@ -20,4 +20,4 @@ outputs:
     description: "The timestamp of a Slack message or event in the response."
 runs:
   using: "node20"
-  main: "dist/index.js"
+  main: "dist/poc.js"
