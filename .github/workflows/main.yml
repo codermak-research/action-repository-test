@@ -1,0 +1,27 @@
+name: Tests
+on:
+  pull_request_target:
+  push:
+    branches:
+      - main
+
+jobs:
+  health-score:
+    permissions:
+      checks: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Yo dawg I heard you like healthscores so I healthscored your healthscore so you can healthscore while you healthscore
+        uses: ./
+        with:
+          codecov_token: ${{ secrets.FILS_CODECOV_API_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          extension: js
+          include: src
+          codecov_max_attempts: 10
+          codecov_retry_delay: 10000
+          codecov_treat_timeout_as_error: true
